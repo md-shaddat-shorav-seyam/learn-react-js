@@ -1,4 +1,4 @@
-### 1. key
+# 1. key
 you have to add key to list otherwise might show error
 ```javascript
 export function ListObj(p){
@@ -33,7 +33,7 @@ export function ListObj(p){
 
 
 
- ### 2. always pass function in ```onclick```
+ # 2. always pass function in ```onclick```
 
  in parameter function if you do not pass function then it runs by its own
 
@@ -64,7 +64,7 @@ export function OnClick() {
 
 
 
-### 3. in style tag we need to pass a object always
+# 3. in style tag we need to pass a object always
 
 
 ```js 
@@ -93,13 +93,14 @@ export function ColorPicker(){
 ```
 
 
-### 4. for using ``` useState()``` for more than one time we need to use updater function
+# 4. for using ``` useState()``` for more than one time we need to use updater function
 
 
 ``` 
 useState(e=>e+1 )
 
 ```
+   as in react value are update after batch update of dom but passing a function would transfer them to a queue value update session 
 
 #### for example:
 
@@ -163,11 +164,47 @@ export function UpdaterFunc() {
 ----
 
 
+# 5. for updateing ubject
+
+#### we need to pass a object with over writing
 
 
 
+``` js
+
+import { useState } from "react"
+
+export function UpdateObj(){
+
+     const [objj, sobjj] = useState({ year: 2024, brand: "ford", model: "mustang" })
+
+        return(
+            <div>
+                <p>your fav car: {objj.year} {objj.brand} {objj.model}</p>
+                <p>hi</p>
+                <input
+                    type="number"
+                    value={objj.year}
+                    onChange={(e) => sobjj({ ...objj, year: Number(e.target.value) })}
+                />
+                <input type="text"
+                    value={objj.brand}
+                    onChange={e=>sobjj( {...objj, brand : e.target.value })}
+                />
+                <input type="text"
+                    value={objj.model}
+                    onChange={e=>sobjj( {...objj, model : e.target.value })}
+                />
+            </div>
+        )
+}
+
+```
 
 
+
+end
+---
 
 
 
