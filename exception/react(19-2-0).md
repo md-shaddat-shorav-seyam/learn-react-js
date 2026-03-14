@@ -171,7 +171,6 @@ export function UpdaterFunc() {
 
 
 ``` js
-
 import { useState } from "react"
 
 export function UpdateObj(){
@@ -185,15 +184,15 @@ export function UpdateObj(){
                 <input
                     type="number"
                     value={objj.year}
-                    onChange={(e) => sobjj({ ...objj, year: Number(e.target.value) })}
+                    onChange={(e) => sobjj( x=>( { ...x, year: Number(e.target.value) }))}
                 />
                 <input type="text"
                     value={objj.brand}
-                    onChange={e=>sobjj( {...objj, brand : e.target.value })}
+                    onChange={e=>sobjj(  x=>( {...x, brand : e.target.value }))}
                 />
                 <input type="text"
                     value={objj.model}
-                    onChange={e=>sobjj( {...objj, model : e.target.value })}
+                    onChange={e=>sobjj(  x=>(  {...x, model : e.target.value }))}
                 />
             </div>
         )
