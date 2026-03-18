@@ -490,9 +490,48 @@ end+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 so we should avoid
 
 
-## eventhough under the state functions run twice but native ``` value ```of  ```const [value, setvalue] = useState()``` updates for onetime but other c
- 
+## eventhough under the state functions run twice but native ``` value ```of  ```const [value, setvalue] = useState()``` and other  updates for onetime 
+  
+  ```js 
+import { useState } from "react";
 
+let d = (e) => {
+  e += 1;
+  console.log("i am");// this run twice
+  return e;
+};
+
+export function Dump() {
+  const [value, setValue] = useState(0);
+  return (
+    <>
+      <div className="h-screen w-screen flex flex-col justify-center items-center">
+        <div>{value}</div>
+        <button
+          onClick={() => {
+            setValue((e) => {
+              let t = e;
+              t = d(t);
+              return t;
+            });
+          }}
+        >
+          update
+        </button>
+      </div>
+    </>
+  );
+}
+
+  ```
+## ☝️ here value update once but ``` closole.log()``` print twice
+
+## on the hand  👇below , sww happens twice that's why there is no meaning of swapping
+
+
+
+
+---
 
 ```js
 import { useState } from "react";
